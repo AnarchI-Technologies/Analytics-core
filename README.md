@@ -6,36 +6,36 @@ Hardcoding freedom into the systems of tomorrow.
 
 ## Purpose
 
-Analytics Core is the measurement layer for AnarchI systems. Its role is to turn raw events, operating signals, and product activity into structured decision support without exposing private runtime data.
+Analytics Core turns raw operating signals into deterministic scorecards. It is intentionally public-safe: examples use synthetic data, calculations are transparent, and model-generated summaries are not allowed until the metrics are computed first.
 
-## Scope
+## What Changed
 
-- Define durable metrics for products, agents, and operations.
-- Normalize raw signals into reviewable analytical state.
-- Support investor, operator, and builder reporting surfaces.
-- Keep sourced facts separate from inferred strategy.
+- Added a small tested Python analytics core.
+- Added deterministic scorecard calculations for signal volume, execution rate, hold rate, review rate, and risk.
+- Replaced the planning-only README with a usable implementation surface.
 
-## Current State
+## Structure
 
-This repository is intentionally initialized as a public planning surface. Implementation should be added behind clear module boundaries as analytics sources become ready for public abstraction.
+```text
+.
+|-- analytics_core/
+|   |-- __init__.py
+|   `-- scorecard.py
+|-- tests/
+|   `-- test_scorecard.py
+`-- README.md
+```
+
+## Verify
+
+```bash
+python -m unittest discover -s tests -q
+```
 
 ## Design Principles
 
-- Deterministic calculations before model-generated interpretation.
-- Reproducible inputs and traceable outputs.
-- No secrets, customer data, wallet keys, or private logs in the public repo.
-- AI-assisted summaries only after deterministic metrics are computed.
+- Sourced facts before inferred strategy.
+- Deterministic calculations before language generation.
+- Synthetic fixtures for public examples.
+- No private logs, customer records, wallet keys, or runtime memory.
 
-## Planned Structure
-
-```text
-analytics-core/
-├── metrics/       # Metric definitions and calculation notes
-├── pipelines/     # Source normalization and transformations
-├── reports/       # Presentation-safe reporting templates
-└── tests/         # Fixture-backed validation
-```
-
-## Brand
-
-AnarchI builds deterministic systems so deeply compiled that they feel intelligent, while reserving real AI for the moments where it is actually required.
