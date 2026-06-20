@@ -38,4 +38,3 @@ python -m unittest discover -s tests -q
 - Deterministic calculations before language generation.
 - Synthetic fixtures for public examples.
 - No private logs, customer records, wallet keys, or runtime memory.
-
